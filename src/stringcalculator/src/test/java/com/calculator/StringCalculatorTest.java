@@ -38,4 +38,14 @@ class StringCalculatorTest {
 
 	}
 
+	@Test
+	void nNumber() {
+		try {
+			assertEquals(6, StringCalculator.add("1,2,3"));
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
