@@ -78,4 +78,15 @@ class StringCalculatorTest {
 
 	}
 
+	@Test
+	void additionOfNumbersGreaterThan1000() {
+		try {
+			assertEquals(2, StringCalculator.add("//,\n1001,2"));
+		} catch (final Exception e) {
+			System.out.println(e.getMessage());
+			// TODO: handle exception
+		}
+
+	}
+
 }

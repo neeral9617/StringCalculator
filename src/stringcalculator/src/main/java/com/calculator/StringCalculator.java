@@ -23,6 +23,7 @@ public class StringCalculator {
 					return 0;
 				}
 			}
+
 			return getSum(iArrInput);
 		}
 	}
@@ -51,7 +52,7 @@ public class StringCalculator {
 
 	private static int getSum(final int[] iArrInput) {
 		try {
-			return Arrays.stream(iArrInput).sum();
+			return Arrays.stream(iArrInput).filter(ele -> ele <= 1000).sum();
 		} catch (final Exception e) {
 			throw e;
 		}
