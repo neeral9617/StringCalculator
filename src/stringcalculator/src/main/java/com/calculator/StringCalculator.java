@@ -33,9 +33,30 @@ public class StringCalculator {
 			final Pattern pattern = Pattern.compile("//(.*)\n(.*)");
 			final Matcher matcher = pattern.matcher(input);
 			matcher.matches();
-			final String delimeter = matcher.group(1); // first group
+			String delimeter = matcher.group(1); // first group
 			final String numbers = matcher.group(2);// second group
-			return numbers.split(delimeter);
+
+			delimeter = delimeter.trim();
+			if (delimeter.startsWith("[") && delimeter.endsWith("]")) {
+
+				delimeter = delimeter.substring(1, delimeter.length() - 1);
+				delimeter = delimeter.replace("[", "");
+				final String[] arrDelimeter = delimeter.split("]");
+				final StringBuilder dynamicDelimeter = new StringBuilder();
+				for (final String delim : arrDelimeter) {
+					if (dynamicDelimeter.length() < 1) {
+
+					} else {
+						dynamicDelimeter.append("|");
+					}
+					dynamicDelimeter.append(delim);
+				}
+
+				return numbers.split(dynamicDelimeter.toString());
+			} else {
+				return numbers.split(delimeter);
+			}
+
 		} else {
 			return input.split(",|\n");
 		}

@@ -100,4 +100,15 @@ class StringCalculatorTest {
 
 	}
 
+	@Test
+	void multipleNumbersWithMultipleDelimetersWithLength() {
+		try {
+			assertEquals(204, StringCalculator.add("//[,][;][aa]\n1aa200,3"));
+		} catch (final Exception e) {
+			System.out.println(e.getMessage());
+			// TODO: handle exception
+		}
+
+	}
+
 }
