@@ -58,4 +58,14 @@ class StringCalculatorTest {
 
 	}
 
+	@Test
+	void multipleNumbersWithDifferentDelimeters() {
+		try {
+			assertEquals(6, StringCalculator.add("//;\n1;2;3"));
+		} catch (final Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -1,6 +1,8 @@
 package stringcalculator.src.main.java.com.calculator;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class StringCalculator {
@@ -16,13 +18,17 @@ public class StringCalculator {
 		}
 	}
 
-	private static String[] splitInput(final String input) {
-		try {
+	public static String[] splitInput(final String input) {
+		if (input.startsWith("//")) {
+			final Pattern pattern = Pattern.compile("//(.*)\n(.*)");
+			final Matcher matcher = pattern.matcher(input);
+			matcher.matches();
+			final String delimeter = matcher.group(1); // first group
+			final String numbers = matcher.group(2);// second group
+			return numbers.split(delimeter);
+		} else {
 			return input.split(",|\n");
-		} catch (final Exception e) {
-			throw e;
 		}
-
 	}
 
 	public static int[] convertToIntegerArray(final String[] arrInput) {
