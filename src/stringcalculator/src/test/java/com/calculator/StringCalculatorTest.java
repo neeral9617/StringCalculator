@@ -18,4 +18,14 @@ class StringCalculatorTest {
 
 	}
 
+	@Test
+	void singleNumber() {
+		try {
+			assertEquals(5, StringCalculator.add("5"));
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
