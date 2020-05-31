@@ -6,8 +6,10 @@ public class StringCalculator {
 			return 0;
 		} else if (isNumeric(input)) {
 			return Integer.parseInt(input);
+		} else {
+			final String[] numbers = input.split(",");
+			return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
 		}
-		return -1;
 	}
 
 	public static boolean isNumeric(final String strNum) {
