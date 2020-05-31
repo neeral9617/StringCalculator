@@ -18,7 +18,7 @@ public class StringCalculator {
 
 	private static String[] splitInput(final String input) {
 		try {
-			return input.split(",");
+			return input.split(",|\n");
 		} catch (final Exception e) {
 			throw e;
 		}
