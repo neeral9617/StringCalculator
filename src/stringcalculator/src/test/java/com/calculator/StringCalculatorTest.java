@@ -89,4 +89,15 @@ class StringCalculatorTest {
 
 	}
 
+	@Test
+	void multipleNumbersWithDifferentDelimetersWithLength() {
+		try {
+			assertEquals(204, StringCalculator.add("//aa\n1aa200aa3"));
+		} catch (final Exception e) {
+			System.out.println(e.getMessage());
+			// TODO: handle exception
+		}
+
+	}
+
 }
