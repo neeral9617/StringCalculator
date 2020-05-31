@@ -3,6 +3,7 @@ package stringcalculator.src.main.java.com.calculator;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StringCalculator {
@@ -14,6 +15,14 @@ public class StringCalculator {
 		} else {
 			final String[] sArrInput = splitInput(input);
 			final int[] iArrInput = convertToIntegerArray(sArrInput);
+			final IntStream negativeNumbersStream = checkNegative(iArrInput);
+			if (negativeNumbersStream != null) {
+				final int[] negativeNumbers = negativeNumbersStream.toArray();
+				if (negativeNumbers.length > 0) {
+					throwNegativeNumberException(negativeNumbers);
+					return 0;
+				}
+			}
 			return getSum(iArrInput);
 		}
 	}
@@ -40,12 +49,16 @@ public class StringCalculator {
 
 	}
 
-	private static int getSum(final int[] arrIntInput) {
+	private static int getSum(final int[] iArrInput) {
 		try {
-			return Arrays.stream(arrIntInput).sum();
+			return Arrays.stream(iArrInput).sum();
 		} catch (final Exception e) {
 			throw e;
 		}
+	}
+
+	private static void throwNegativeNumberException(final int[] numbers) throws java.lang.Exception {
+		throw new Exception("negatives not allowed " + Arrays.toString(numbers));
 	}
 
 	public static boolean isNumeric(final String strNum) {
@@ -62,5 +75,10 @@ public class StringCalculator {
 		} catch (final Exception e) {
 			throw e;
 		}
+	}
+
+	private static IntStream checkNegative(final int[] iArrInput) {
+		return Arrays.stream(iArrInput).filter(ele -> ele < 0);
+
 	}
 }

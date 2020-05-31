@@ -13,7 +13,7 @@ class StringCalculatorTest {
 		try {
 			assertEquals(0, StringCalculator.add(""));
 		} catch (final Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -23,7 +23,7 @@ class StringCalculatorTest {
 		try {
 			assertEquals(1, StringCalculator.add("1"));
 		} catch (final Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -33,7 +33,7 @@ class StringCalculatorTest {
 		try {
 			assertEquals(3, StringCalculator.add("1,2"));
 		} catch (final Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -43,7 +43,7 @@ class StringCalculatorTest {
 		try {
 			assertEquals(6, StringCalculator.add("1,2,3"));
 		} catch (final Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -53,7 +53,7 @@ class StringCalculatorTest {
 		try {
 			assertEquals(6, StringCalculator.add("1\n2,3"));
 		} catch (final Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -63,9 +63,19 @@ class StringCalculatorTest {
 		try {
 			assertEquals(6, StringCalculator.add("//;\n1;2;3"));
 		} catch (final Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
+	}
+
+	@Test
+	void additionOfMultipleNegativeNumbersDelimeters() {
+		try {
+			assertEquals(6, StringCalculator.add("//,\n1,-200,-3"));
+		} catch (final Exception e) {
+			System.out.println(e.getMessage());
+			// TODO: handle exception
+		}
+
 	}
 
 }
